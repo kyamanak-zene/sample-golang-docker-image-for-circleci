@@ -6,14 +6,14 @@ workflows:
   build_and_push_image:
     jobs:
       - aws-ecr/build-and-push-image:
-        region: AWS_REGION
-        account-url: AWS_ECR_ACCOUNT_URL
-        repo: 'seed-test'
-        tag: "${CIRCLE_SHA1}"
+          account-url: AWS_ECR_ACCOUNT_URL
+          repo: 'seed-test'  
+          region: AWS_REGION
+          tag: "${CIRCLE_SHA1}"
       - aws-ecs/deploy-service-update:
-        requires:
-          - aws-ecr/build-and-push-image
-        family: 'demo-run-task-definition'
-        cluster-name: 'demo-cluster'
-        service-name: 'demo-service'
-        container-image-name-updates: 'container=demo-kyamanak,tag=${CIRCLE_SHA1}'
+          requires:
+            - aws-ecr/build-and-push-image
+          family: 'demo-run-task-definition'
+          cluster-name: 'demo-cluster'
+          service-name: 'demo-service'
+          container-image-name-updates: 'container=demo-kyamanak,tag=${CIRCLE_SHA1}'
