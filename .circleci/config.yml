@@ -16,4 +16,4 @@ workflows:
           family: 'demo-run-task-definition'
           cluster-name: 'demo-cluster'
           service-name: 'demo-service'
-          container-image-name-updates: 'container=demo-kyamanak,tag=${CIRCLE_SHA1}'
+          container-image-name-updates: 'container=demo-kyamanak,tag=latest'
