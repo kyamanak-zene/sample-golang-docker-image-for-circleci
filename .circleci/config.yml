@@ -18,15 +18,15 @@ jobs:
           failure_message: |-
             :circleci-fail: $CIRCLE_BRANCH のデプロイが失敗しました
             :github_octocat: User：$CIRCLE_USERNAME
-          webhook: $SLACK_WEBHOOK
+          webhook: SLACK_WEBHOOK
 
 workflows:
   build_and_push_image:
     jobs:
       - aws-ecr/build-and-push-image:
-          account-url: $AWS_ECR_ACCOUNT_URL
+          account-url: AWS_ECR_ACCOUNT_URL
           repo: seed-test
-          region: $AWS_REGION
+          region: AWS_REGION
           tag: $CIRCLE_SHA1
       - aws-ecs/deploy-service-update:
           requires:
