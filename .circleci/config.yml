@@ -36,4 +36,4 @@ workflows:
           container-image-name-updates: 'container=demo-kyamanak,tag=${CIRCLE_SHA1}'
       - notify-slack:
           requires:
-            - aws-ecs/deploy-service-update:
+            - aws-ecs/deploy-service-update
