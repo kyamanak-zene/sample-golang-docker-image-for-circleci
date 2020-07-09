@@ -1,1 +1,1 @@
-# seed-test
+# sample-golang-docker-image
